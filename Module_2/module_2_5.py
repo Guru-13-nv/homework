@@ -15,13 +15,17 @@
 # Вложенный список - это строка матрицы, элементы вложенных списков(глубже) - это столбцы матрицы.
 # В случае передачи аргумента со значением 0 или меньше, будет возвращаться пустой список.
 
-def get_matrix(n, m, value):
-    matrix = []
-    for i in range(n):
-        matrix.append([])
-        for j in range(m):
-            matrix[i].append(value)
-    return matrix
+def get_matrix(n, m, value):  # Создание функции
+    '''Описание функции:
+    Создание списка с n списками в которых m значений определённых переменной value'''
+
+    matrix = []  # Создание списка
+    for i in range(n):  # Начало цикла
+        matrix.append([])  # Добавление n списков в список matrix
+        for j in range(m):  # начало внутреннего цикла
+            matrix[i].append(value)  # Добавление value значений m раз в список с индексом i
+    return matrix  # Вывод функции matrix
+
 
 result1 = get_matrix(2, 2, 10)
 result2 = get_matrix(3, 5, 42)
