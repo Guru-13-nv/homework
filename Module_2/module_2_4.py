@@ -22,19 +22,19 @@ primes = []
 not_primes = []
 # print (len(numbers))
 for value_1 in numbers:  # Обозначаем набор значений, где value_1 поочерёдно принимает значения списка
+    if value_1 == 1:
+        continue
     is_prime = True  # Флаг на простоту числа Тоже не понял как этот флаг влияет на выборку по условию
     for value_2 in range(2, value_1 - 1):  # Выставляем, что бы перебор шёл сугубо до указанного по индексу числа.
         # Значение value_2 принимает значение списка -1 и начинается с 2
         # Описание фильтров
-        # if value_1 == 1:
-        #     continue
         if value_1 % value_2 == 0 and value_1 != 1:  # Так и не понял как работает флаг. Методом научного тыка подогнал
             is_prime = False  # Тут условие для простых чисел, почему работает когда присваивается False
             break
-    if is_prime == True and value_1 != 1:  # Тут если условие то писать туда
-        primes.append(value_1)
-    elif is_prime == False and value_1 != 1:
-        not_primes.append(value_1)
+    if is_prime == True:  # and value_1 != 1:  # Тут если условие то писать туда
+            primes.append(value_1)
+    elif is_prime == False:  # and value_1 != 1:
+            not_primes.append(value_1)
 print(f'Простые числа: {primes}\nСоставные числа: {not_primes}')
 
 ## Не понял логику работы True False При работе со 2 циклами...
