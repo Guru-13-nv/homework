@@ -13,8 +13,8 @@ def funk_stone():  # Функция выбора случайного камня
 
 random_1 = funk_stone()
 pas_final = ''
-for pas_1 in range(1, 20):
-    for pas_2 in range(1, 20):
+for pas_1 in range(1, random_1):
+    for pas_2 in range(1, random_1):
         if random_1 % (pas_1 + pas_2) == 0 and pas_1 < pas_2 and pas_1 != pas_2:
             pas_final += str(pas_1) + str(pas_2)
 print(f'Выпал камень: {random_1}\n Пароль к нему {pas_final}')
