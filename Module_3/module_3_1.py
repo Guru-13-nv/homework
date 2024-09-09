@@ -53,9 +53,7 @@ def string_info(str_1):  # Принимает строку и возвращае
 
 def is_contains(str_1,
                 list_1):  # Принимает строку '' и список [] и возвращает True если строка находится в списке или False
-    list_lo = []
-    for list_2 in list_1:
-        list_lo.append(list_2.lower())
+    list_lo = [list_2.lower() for list_2 in list_1]
     count_calls()
     return str_1.lower() in list_lo
 
