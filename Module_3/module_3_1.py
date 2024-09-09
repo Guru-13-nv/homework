@@ -39,42 +39,25 @@ False
 calls = 0
 
 
-# str_1 = input('Введите слово: ')
-
 def count_calls():  # Подсчитывает вызов остальных функций
     global calls
     calls = calls + 1
     return calls
 
 
-# print (count_calls())
-
 def string_info(str_1):  # Принимает строку и возвращает кортеж (len str, str.upper, str.lower).
-    global tuple_1
     tuple_1 = len(str_1), str_1.upper(), str_1.lower()
     count_calls()
     return tuple_1
 
-
-# print (string_info())
-# print (tuple_1)
 
 def is_contains(str_1,
                 list_1):  # Принимает строку '' и список [] и возвращает True если строка находится в списке или False
     list_lo = []
     for list_2 in list_1:
         list_lo.append(list_2.lower())
-        # print(list_lo)
     count_calls()
-    # print (str_1.lower() in list_lo)
     return str_1.lower() in list_lo
-    # if str_1.lower() in list_lo:
-    #     bool_1 = True
-    #     count_calls()
-    # elif str_1.lower() not in list_lo:
-    #     bool_1 = False
-    #     count_calls()
-    # return bool_1
 
 
 print(string_info('Capybara'))
