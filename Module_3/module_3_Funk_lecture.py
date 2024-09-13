@@ -1,4 +1,5 @@
 '''Способы вызова функции. Ошибки при вызове функции'''
+from Module_1.Variables import course_name
 
 
 # Простая функция
@@ -45,7 +46,7 @@ list = [1, 2, 3]
 print_parms_1(*list)
 
 '''Именованные параметры'''
-dict_={'a':1, 'b':2, 'c':3}
+dict_ = {'a': 1, 'b': 2, 'c': 3}
 print_parms_1(**dict_)  # Занимают верное положение параметров
 
 '''Важно!
@@ -60,3 +61,62 @@ def append_to_list(item, list_my=None):
    list_my = []
   list_my.append(item)
 print(list_my)'''
+
+# Лекция 3
+'''Произвольное число параметров'''
+
+
+# Когда необходимо произвольное число параметров и мы не знаем сколько параметров будет передано
+def test_funk(*params):
+    print('Тип', type(params))
+    print('Аргумент', params)
+
+
+test_funk(1, 2, 3, 4)  # технически кортеж из параметров
+
+
+def summator(txt, *values, type='sum'):  # Добавим позиционный параметр txt. Можно так же добавить именованный
+    # параметр type
+    s = 0
+    for i in values:
+        s += i
+    return f'{txt}{s} {type}'
+
+
+print(summator('Сумма чисел: ', 1, 2, 3, 4, type='summator'))
+
+
+# Использование произвольного числа именованных параметров
+def info(**values):  # При использовании ** мы сообщаем, что не знаем сколько именованных
+    # параметров будет передано. Технически - это словарь
+    print('Тип', type(values))
+    print('Аргумент', values)
+    for key, values in values.items():  # Для формирования удобочитаемого вида
+        print(key, values)
+
+
+# Использование произвольного числа позиционных и именованных параметров
+# def info_1(*types_1, **values_1):  # При использовании ** мы сообщаем, что не знаем сколько параметров будет передано. Технически - это словарь
+# Так же можно комбинировать
+def info_1(value_1, *types_1, mame_1='Den', **values_1):
+    print('Тип', type(values_1))
+    print('Аргумент', values_1)
+    for key, value in values_1.items():  # Для формирования удобочитаемого вида
+        print(key, value)
+    print(types_1)
+
+
+info_1('Пример использования параметров всех типов', 2, 3, 4, 5, 6, names_autor='Denis', mame_1='Den',
+       course='Python')
+
+
+# Общая математическая функция
+def my_sum(n, *args, txt='Сумма чисел'):
+    s = 0
+    for i in range(len(args)):
+        s += args[i] ** n
+    print(txt + ':', s)
+
+
+my_sum(1, 1, 2, 3, 4, 5) #Сумма чисел
+my_sum(2, 2,3,4,5,6, txt='Сумма квадратов')
