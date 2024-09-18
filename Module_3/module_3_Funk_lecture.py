@@ -1,9 +1,4 @@
 '''Способы вызова функции. Ошибки при вызове функции'''
-from tkinter.tix import WINDOW
-
-from Module_1.Variables import course_name
-from Module_2.module_2_3 import number
-
 
 # Простая функция
 def print_parms(a, b, c):
@@ -165,21 +160,62 @@ print(unique([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 # Функции практика часть 2
 # Первая часть создания калькулятора - Графический интерфейс
-import tkinter as tk
-
 # Есть ещё методы размещения элементов: Plays, Pac, Greed
+import tkinter as tk  # Импорт графической библиотеки
 
+
+# Шаг 2. Создание вычислительных функций
+def get_values():  # Преобразование значений
+    num1 = int(number1_entry.get())
+    num2 = int(number2_entry.get())
+    return num1, num2
+
+
+def insert_values(value_kal):  # Вставка значений с отчисткой предыдущего результата
+    # Отчистка поля вывода с помощью метода delete, где указывается индекс и конец методом "end"
+    answer_entry.delete(0, 'end')
+    answer_entry.insert(0, value_kal)  # Вывод методом insert, где указывается индекс и значение
+
+def add():  # Сложение
+    num1, num2 = get_values()  # Поступление преобразованных значений
+    res = num1 + num2  # Сложение
+    insert_values(res)  # Вызов функции для отчистки старого значения в возврата нового
+
+
+def sub():
+    num1, num2 = get_values()  # Поступление преобразованных значений
+    res = num1 - num2  # Сложение
+    insert_values(res)  # Вызов функции для отчистки старого значения в возврата нового
+
+
+def mul():
+    num1, num2 = get_values()  # Поступление преобразованных значений
+    res = num1 * num2  # Сложение
+    insert_values(res)  # Вызов функции для отчистки старого значения в возврата нового
+
+
+def div():
+    num1, num2 = get_values()  # Поступление преобразованных значений
+    res = num1 / num2  # Сложение
+    insert_values(res)  # Вызов функции для отчистки старого значения в возврата нового
+
+
+# Шаг 1. Создание графического окна
 window = tk.Tk()  # Объявление окна
 window.title('Калькулятор')  # Имя окна
 window.geometry('350x350')  # Размер окна
 window.resizable(False, False)  # Запрет изменения размера
-Button_add = tk.Button(window, text='+', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+# Создание кнопки и надпись на кнопке, размеры кнопки, вызываемая функция
+Button_add = tk.Button(window, text='+', width=2, height=2, command=add)
 Button_add.place(x=100, y=200)  # Размер кнопки
-Button_sub = tk.Button(window, text='-', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_sub = tk.Button(window, text='-', width=2, height=2,
+                       command=sub)  # Создание кнопки и надпись на кнопке, размеры кнопки
 Button_sub.place(x=150, y=200)
-Button_mul = tk.Button(window, text='X', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_mul = tk.Button(window, text='X', width=2, height=2,
+                       command=mul)  # Создание кнопки и надпись на кнопке, размеры кнопки
 Button_mul.place(x=200, y=200)
-Button_div = tk.Button(window, text='/', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_div = tk.Button(window, text='/', width=2, height=2,
+                       command=div)  # Создание кнопки и надпись на кнопке, размеры кнопки
 Button_div.place(x=250, y=200)
 # Текстовое поле
 number1_entry = tk.Entry(window, width=28)  # Добавление текстового поля с казанием ширины
@@ -193,7 +229,7 @@ number1 = tk.Label(window, text='Введите первое число')
 number1.place(x=100, y=50)
 number2 = tk.Label(window, text='Введите второе число')
 number2.place(x=100, y=125)
-answer_entry = tk.Label(window, text='Ответ')
-answer_entry.place(x=100, y=275)
+answer = tk.Label(window, text='Ответ')
+answer.place(x=100, y=275)
 
 window.mainloop()  # Обновление экрана
