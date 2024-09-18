@@ -1,5 +1,8 @@
 '''Способы вызова функции. Ошибки при вызове функции'''
+from tkinter.tix import WINDOW
+
 from Module_1.Variables import course_name
+from Module_2.module_2_3 import number
 
 
 # Простая функция
@@ -159,3 +162,38 @@ def unique(list_):  # Уникальный список
 
 
 print(unique([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+# Функции практика часть 2
+# Первая часть создания калькулятора - Графический интерфейс
+import tkinter as tk
+
+# Есть ещё методы размещения элементов: Plays, Pac, Greed
+
+window = tk.Tk()  # Объявление окна
+window.title('Калькулятор')  # Имя окна
+window.geometry('350x350')  # Размер окна
+window.resizable(False, False)  # Запрет изменения размера
+Button_add = tk.Button(window, text='+', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_add.place(x=100, y=200)  # Размер кнопки
+Button_sub = tk.Button(window, text='-', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_sub.place(x=150, y=200)
+Button_mul = tk.Button(window, text='X', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_mul.place(x=200, y=200)
+Button_div = tk.Button(window, text='/', width=2, height=2)  # Создание кнопки и надпись на кнопке, размеры кнопки
+Button_div.place(x=250, y=200)
+# Текстовое поле
+number1_entry = tk.Entry(window, width=28)  # Добавление текстового поля с казанием ширины
+number1_entry.place(x=100, y=75)  # Указание местоположения текстового поля с отступом 100, по высоте 75
+number2_entry = tk.Entry(window, width=28)
+number2_entry.place(x=100, y=150)
+answer_entry = tk.Entry(window, width=28)
+answer_entry.place(x=100, y=300)
+# Виджеты
+number1 = tk.Label(window, text='Введите первое число')
+number1.place(x=100, y=50)
+number2 = tk.Label(window, text='Введите второе число')
+number2.place(x=100, y=125)
+answer_entry = tk.Label(window, text='Ответ')
+answer_entry.place(x=100, y=275)
+
+window.mainloop()  # Обновление экрана
