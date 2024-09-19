@@ -54,36 +54,65 @@ sum_result_2 = 0
 
 def calculate_structure_sum_2(*ds_2):
     global sum_result_2
-    # if ds_2 != 0:
     for value_global in list(ds_2):
         if isinstance(value_global, str) == True:
             sum_result_2 = sum_result_2 + len(value_global)
         elif isinstance(value_global, int) == True:
             sum_result_2 = sum_result_2 + value_global
-        elif isinstance(value_global, tuple) == True:  # and value_global != 0:
+        elif isinstance(value_global, tuple) == True:
             for value_internal in list(value_global):
                 calculate_structure_sum_2(value_internal)
-        elif isinstance(value_global, list) == True:  # and value_global != 0:
+        elif isinstance(value_global, list) == True:
             for value_internal in value_global:
                 calculate_structure_sum_2(value_internal)
         elif isinstance(value_global, dict) == True:
-            for value_dict_2 in list(value_global):# and value_global != 0:
-                calculate_structure_sum_2(list(value_global.items()))
-            # value_dict_list = list(value_global)
-            #     for value_dict_2 in value_dict_list:
-            #     if isinstance(value_dict_2, dict) == True:
-            #         calculate_structure_sum_2(list(value_dict_2))
-            #     elif isinstance(value_dict_2, list) == True:
-            #         calculate_structure_sum_2(value_dict_2)
-            #     elif isinstance(value_dict_2, str) == True:
-            #         calculate_structure_sum_2(value_dict_2)
-            #         calculate_structure_sum_2(value_global[value_dict_2])
-
+            calculate_structure_sum_2(list(value_global.items()))
+        elif isinstance(value_global, set) == True:
+            for value_set in value_global:
+                calculate_structure_sum_2(list(value_set))
     return sum_result_2
 
 
 result_2 = calculate_structure_sum_2(data_structure)
 print(result_2)
+
+# Рекомендации преподавателя
+'''1.определяем переменную которую будем использовать для суммирования результатов, например total_sum=0
+
+2.далее arg проходимся  циклом по args (в вашем случае ds)
+2.1проверяем isinstance arg на принадлежность list, tuple, set:
+total_sum +=   calculate_nested_sum(*arg)
+2.2 проверяем isinstance arg на принадлежность dict:
+total_sum +=   calculate_nested_sum(*arg.items())
+2.3 проверяем isinstance arg на принадлежность str:
+total_sum +=   len(arg)
+2.4 проверяем isinstance arg на принадлежность 
+int,float:
+total_sum += arg
+2.5 если аргументов нет пасуем
+
+3. возвращаем total_sum
+
+4. обращаемся к функции и передаем структуру'''
+sum_result_3=0
+def calculate_structure_sum_3(*args_3):
+    global sum_result_3
+    for i_3 in args_3:
+        if isinstance(i_3, list)==True or isinstance(i_3, tuple) == True or isinstance(i_3, set)==True: #[](){}
+            sum_result_3 = calculate_structure_sum_3(*i_3)
+        if isinstance(i_3, dict) == True: #{}
+            sum_result_3 = calculate_structure_sum_3(*i_3.items())
+        if isinstance(i_3, str) == True:
+            sum_result_3 += len(i_3)
+        if isinstance(i_3, int) == True or isinstance(i_3, float) == True:
+            sum_result_3 += i_3
+    return sum_result_3
+result_3 = calculate_structure_sum_3(data_structure)
+print(result_3)
+
+
+#
+
 
 a = ''
 b = ()
