@@ -8,6 +8,7 @@ data_structure = [
 
 sum_result = 0
 
+
 def structure_args(*args):
     for value_1 in args:
         if isinstance(value_1, list) == True or isinstance(value_1, tuple) == True:
@@ -46,26 +47,3 @@ def calculate_structure_sum(ds):
 
 result = calculate_structure_sum(data_structure)
 print(result)
-
-a = []
-b = ()
-c = {}
-d = 'a'
-g = 4
-print(f'a={type(a)}, b={type(b)}, c={type(c)}, d={type(d)}, g={type(g)}')
-isinstance(a, list)
-e = {'cube': 7, 'drum': 8}
-print(list(e))
-print(e.values())
-for i in e.values():
-    print(isinstance(i, int))
-print(e.keys())
-print(len(d))
-print(list(data_structure))
-
-for i in list(data_structure):
-    print(i)
-    print (type(i))
-    for j in i:
-        print(j)
-        print(type(j))
