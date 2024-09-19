@@ -100,12 +100,14 @@ def calculate_structure_sum_3(*args_3):
     for i_3 in args_3:
         if isinstance(i_3, list)==True or isinstance(i_3, tuple) == True or isinstance(i_3, set)==True: #[](){}
             sum_result_3 = calculate_structure_sum_3(*i_3)
-        if isinstance(i_3, dict) == True: #{}
+        elif isinstance(i_3, dict) == True: #{}
             sum_result_3 = calculate_structure_sum_3(*i_3.items())
-        if isinstance(i_3, str) == True:
+        elif isinstance(i_3, str) == True:
             sum_result_3 += len(i_3)
-        if isinstance(i_3, int) == True or isinstance(i_3, float) == True:
+        elif isinstance(i_3, int) == True or isinstance(i_3, float) == True:
             sum_result_3 += i_3
+        elif i_3 is None:
+            pass
     return sum_result_3
 result_3 = calculate_structure_sum_3(data_structure)
 print(result_3)
