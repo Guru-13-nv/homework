@@ -30,6 +30,21 @@ class Human_2:
     def __len__(self):
         return self.age_2
 
+    # Лекция 4
+    def __lt__(self, other):  # lover than
+        return self.age_2 < other.age_2
+
+    def __gt__(self, other):  # greater than
+        return self.age_2 > other.age_2
+
+    def __eq__(self, other):
+        return self.name_2 == other.name_2 and self.age_2 == other.age_2
+
+    def __bool__(self):  # Если не = 0, то истина
+        return bool(self.age_2)
+    def __str__(self): #Строковое представление объекта
+        return f'{self.name_2}'
+
 
 den_2 = Human_2('Денис', 22)
 max_2 = Human_2('Макс', 22)
@@ -43,4 +58,9 @@ max_2.birthday_2()
 # del den_2 # Диструктор
 # max_2.birthday_2()
 # input() # После ввода значения будет удалён и Макс
+# Лекция 3
 print(len(den_2))  # Почему-то метод del выводит сообщение
+# Лекция 4
+print(den_2 < max_2)
+print(max_2 == den_2)
+print(max_2)
