@@ -1,7 +1,6 @@
 # Задача "Developer - не только разработчик":
-
 class House:
-    def __init__(self, name='ЖК Эльбрус', number_of_floors=30):
+    def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
 
@@ -17,13 +16,65 @@ class House:
         return self.number_of_floors
 
     def __str__(self):
-        return (f'Название: {self.name}, количество этажей: {self.number_of_floors}')
+        return f'Название: {str(self.name)}, количество этажей: {str(self.number_of_floors)}'
 
+    # module_5_3
+    def __eq__(self, other):
+        return self.number_of_floors == other
+
+    def __lt__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors < other.number_of_floors
+        else:
+            print('Сравнить можно только объекты одного типа lt')
+
+    def __le__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors <= other.number_of_floors
+        else:
+            print('Сравнить можно только объекты одного типа le')
+
+    def __gt__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors > other.number_of_floors
+        else:
+            print('Сравнить можно только объекты одного типа gt')
+
+    def __ge__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors >= other.number_of_floors
+        else:
+            print('Сравнить можно только объекты одного типа ge')
+
+    def __ne__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors != other.number_of_floors
+        else:
+            print('Сравнить можно только объекты одного типа')
+
+    def __add__(self, value):
+        if isinstance(value, int):
+            self.number_of_floors = self.number_of_floors + value
+            return House(self.name ,self.number_of_floors)
+
+
+    def __radd__(self, value):
+        if isinstance(value, int):
+            House.__add__(self, value)
+            return House(self.name ,self.number_of_floors)
+
+    def __iadd__(self, value):
+        if isinstance(value, int):
+            self.number_of_floors += value
+            return House(self.name ,self.number_of_floors)
+
+print('--module_5_1--')
 h1 = House('ЖК Горский', 18)
 h2 = House('Домик в деревне', 2)
 h1.go_to(5)
 h2.go_to(10)
-# #module_5_2
+print('-----------------------------------------')
+print('--module_5_2--')
 h1 = House('ЖК Эльбрус', 10)
 h2 = House('ЖК Акация', 20)
 # __str__
@@ -32,3 +83,31 @@ print(h2)
 # __len__
 print(len(h1))
 print(len(h2))
+print('-----------------------------------------')
+print('--module_5_3--')
+h1 = House('ЖК Эльбрус', 10)
+h2 = House('ЖК Акация', 20)
+
+print(h1)
+print(h2)
+
+print(h1 == h2)  # __eq__
+
+h1 = h1 + 10  # __add__
+print(h1)
+print(h1 == h2)
+
+h1 += 10  # __iadd__
+print(h1)
+
+h2 = 10 + h2  # __radd__
+print(h2)
+
+# print(type(h1))
+# print(type(h2))
+
+print(h1 > h2)  # __gt__
+print(h1 >= h2)  # __ge__
+print(h1 < h2)  # __lt__
+print(h1 <= h2)  # __le__
+print(h1 != h2)  # __ne__
