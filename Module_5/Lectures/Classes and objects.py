@@ -1,4 +1,4 @@
-# Лекция 1
+# Лекция 1 (Классы и объекты)
 class Human_1:
     # def __init__(self): # Фиксированные характеристики
     #     self.name = 'Den'
@@ -9,7 +9,7 @@ class Human_1:
 # den_1 = Human_1()
 # max_1 = Human_1()
 
-# Лекция 2
+# Лекция 2 (Атрибуты и методы объекта. Указатель на свой объект в методах)
 class Human_2:
     def __init__(self, name_2, age_2):  # Принимает характеристики
         self.name_2 = name_2
@@ -23,14 +23,14 @@ class Human_2:
         self.age_2 += 1
         print(f'У меня сегодня день рождения мне сегодня {self.age_2}')
 
-    # Лекция3
+    # Лекция3 (Специальные методы классов)
     def __del__(self):
         print(f'{self.name_2} ушёл')
 
     def __len__(self):
         return self.age_2
 
-    # Лекция 4
+    # Лекция 4 (Специальные методы классов)
     def __lt__(self, other):  # lover than
         return self.age_2 < other.age_2
 
