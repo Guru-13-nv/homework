@@ -1,5 +1,6 @@
 # Лекция 1 (Классы и объекты)
 class Human_1:
+    head = True #Классовый атрибут
     # def __init__(self): # Фиксированные характеристики
     #     self.name = 'Den'
     def __init__(self, name_1):  # Принимает характеристики
@@ -30,7 +31,7 @@ class Human_2:
     def __len__(self):
         return self.age_2
 
-    # Лекция 4 (Специальные методы классов)
+    # Лекция 4 (Перегрузка операторов)
     def __lt__(self, other):  # lover than
         return self.age_2 < other.age_2
 
