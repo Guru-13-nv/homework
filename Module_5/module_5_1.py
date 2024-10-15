@@ -75,7 +75,7 @@ class House:
         if isinstance(value, int):
             self.number_of_floors += value
             return House(self.name, self.number_of_floors)
-
+#module_5_4.py
     def __del__(self):
         print(f'{str(self.name)} снесён, но он останется в истории')
 
