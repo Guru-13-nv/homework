@@ -1,5 +1,14 @@
 # Задача "Developer - не только разработчик":
 class House:
+
+    houses_history = []  # module_5_4
+
+    # module_5_4
+    def __new__(cls, *name, **number_of_floors):
+        if name[0] not in cls.houses_history:
+            cls.houses_history.append(name[0])
+        return super().__new__(cls)
+
     def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
@@ -55,18 +64,21 @@ class House:
     def __add__(self, value):
         if isinstance(value, int):
             self.number_of_floors = self.number_of_floors + value
-            return House(self.name ,self.number_of_floors)
-
+            return House(self.name, self.number_of_floors)
 
     def __radd__(self, value):
         if isinstance(value, int):
             House.__add__(self, value)
-            return House(self.name ,self.number_of_floors)
+            return House(self.name, self.number_of_floors)
 
     def __iadd__(self, value):
         if isinstance(value, int):
             self.number_of_floors += value
-            return House(self.name ,self.number_of_floors)
+            return House(self.name, self.number_of_floors)
+
+    def __del__(self):
+        print(f'{str(self.name)} снесён, но он останется в истории')
+
 
 print('--module_5_1--')
 h1 = House('ЖК Горский', 18)
@@ -111,3 +123,17 @@ print(h1 >= h2)  # __ge__
 print(h1 < h2)  # __lt__
 print(h1 <= h2)  # __le__
 print(h1 != h2)  # __ne__
+print('-----------------------------------------')
+print('--module_5_4--')
+h1 = House('ЖК Эльбрус', 10)
+print(House.houses_history)
+h2 = House('ЖК Акация', 20)
+print(House.houses_history)
+h3 = House('ЖК Матрёшки', 20)
+print(House.houses_history)
+
+# Удаление объектов
+del h2
+del h3
+
+print(House.houses_history)
