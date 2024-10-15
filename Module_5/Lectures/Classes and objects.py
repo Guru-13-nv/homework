@@ -56,8 +56,8 @@ print(den_2.name_2, den_2.age_2)
 den_2.say_info_2()
 max_2.say_info_2()
 max_2.birthday_2()
-# del den_2 # Диструктор
-# max_2.birthday_2()
+del den_2 # Диструктор
+max_2.birthday_2()
 # input() # После ввода значения будет удалён и Макс
 # Лекция 3
 print(len(den_2))  # Почему-то метод del выводит сообщение
