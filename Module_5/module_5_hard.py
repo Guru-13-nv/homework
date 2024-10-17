@@ -20,6 +20,7 @@ class User:
     def __str__(self):
         return f'{self.nickname} {self.password} {self.age}'
 
+
 class Video:
     '''Каждый объект класса Video должен обладать следующими атрибутами и методами:
 Атрибуты: title(заголовок, строка), duration(продолжительность, секунды), time_now(секунда остановки (изначально 0)),
@@ -40,6 +41,7 @@ adult_mode(ограничение по возрасту, bool (False по умо
 
     def __str__(self):
         return f'{self.title} {self.duration} {self.time_now} {self.adult_mode}'
+
 
 class UrTube:
     '''Каждый объект класса UrTube должен обладать следующими атрибутами и методами:
@@ -62,23 +64,30 @@ class UrTube:
         for user in self.users:
             if user.nickname == nickname and hash(user.password) == hash(password):
                 self.current_user = User
-        return self.current_user
+        return self.current_user.nickname
 
     def register(self, nickname, password, age):
         '''Метод register, который принимает три аргумента: nickname, password, age, и добавляет пользователя в список,
         если пользователя не существует (с таким же nickname). Если существует, выводит на экран:
         "Пользователь {nickname} уже существует". После регистрации, вход выполняется автоматически.'''
-        if nickname in self.users:
-            print(f'Пользователь {nickname} уже существует')
-        elif nickname not in self.users:
-            self.users.append(User(str(nickname), hash(password), int(age)))
-            self.current_user = self.users[-1]
-        return self.current_user
+        if nickname not in [user.nickname for user in self.users]:
+            self.users.append(User(nickname, password, age))
+            self.current_user = User(nickname, password, age)
+            return self.current_user.nickname
+        else:
+            print(f"Пользователь {nickname} уже существует")
+        # for user_i in self.users:
+        #     if nickname == user_i.nickname:
+        #         print(f'Пользователь {nickname} уже существует')
+        # if self.current_user is None:
+        #     self.users.append(User(str(nickname), hash(password), int(age)))
+        #     self.current_user = self.users[-1]
+        #     return self.current_user.nickname
 
     def log_out(self):
         '''Метод log_out для сброса текущего пользователя на None.'''
         self.current_user = None
-        return self.current_user
+        return self.current_user.nickname
 
     def add(self, *Video):
         '''Метод add, который принимает неограниченное кол-во объектов класса Video и все добавляет в videos, если с
@@ -125,6 +134,7 @@ class UrTube:
                 return
         print("Видео не найдено")
 
+
 ur = UrTube()
 v1 = Video('Лучший язык программирования 2024 года', 200)
 v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
@@ -145,7 +155,7 @@ ur.watch_video('Для чего девушкам парень программи
 
 # Проверка входа в другой аккаунт
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
-print(ur.current_user)
+print(ur.current_user.nickname)
 
 # Попытка воспроизведения несуществующего видео
 ur.watch_video('Лучший язык программирования 2024 года!')
