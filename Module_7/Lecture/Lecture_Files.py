@@ -46,3 +46,32 @@ print(file.tell())
 print(file.seek(20))
 pprint(file.read())
 file.close()
+
+#Лекция №3 Позиционирование в файле:
+import io
+name = 'Files2.txt'
+# file = open(name, 'w')
+file = open(name, 'r')
+print(file.tell())
+pprint(file.read())
+file.close()
+file = open(name, 'a')
+print(file.tell())
+file.seek(15)
+file.write('New Text')
+print(file.tell())
+file.close()
+
+name = 'Files3.txt'
+# file = open(name, 'w')
+file = open(name, 'r', encoding='utf-8')
+print(file.writable())
+print(file.readable())
+print(file.seekable())
+print(file.name)
+print(file.buffer)
+print(file.closed)
+print(file.tell())
+pprint(file.read())
+print(file.tell())
+file.close()
