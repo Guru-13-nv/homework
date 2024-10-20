@@ -52,26 +52,26 @@ import io
 name = 'Files2.txt'
 # file = open(name, 'w')
 file = open(name, 'r')
-print(file.tell())
-pprint(file.read())
-file.close()
-file = open(name, 'a')
-print(file.tell())
-file.seek(15)
-file.write('New Text')
-print(file.tell())
-file.close()
+print(file.tell()) # Текущая позиция в файле
+pprint(file.read()) # Читает файл
+file.close() # Закрывает файл
+file = open(name, 'a') # Открывает файл в режиме append
+print(file.tell()) # Текущая позиция в файле
+file.seek(15) # Перемещает файл в указанную позицию
+file.write('New Text') # Записывает в файл
+print(file.tell()) # Текущая позиция в файле
+file.close() # Закрывает файл
 
-name = 'Files3.txt'
+name = 'Files3.txt' # Создание файла
 # file = open(name, 'w')
 file = open(name, 'r', encoding='utf-8')
-print(file.writable())
-print(file.readable())
-print(file.seekable())
-print(file.name)
-print(file.buffer)
-print(file.closed)
-print(file.tell())
-pprint(file.read())
-print(file.tell())
-file.close()
+print(file.writable()) # Разрешение записи в файл
+print(file.readable()) # Разрешение чтения из файла
+print(file.seekable()) # Разрешение перемещения файла
+print(file.name) # Имя файла
+print(file.buffer) # Буфер
+print(file.closed) # Файл закрыт
+print(file.tell()) # Текущая позиция в файле
+pprint(file.read()) # Читает файл
+print(file.tell()) # Текущая позиция в файле
+file.close() # Закрывает файл
