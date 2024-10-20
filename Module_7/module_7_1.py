@@ -41,7 +41,7 @@ class Shop:
             product_list = self.get_products()
             if str(product) in product_list:
                 # if product_list.index(str(product)):
-                print('Продукт <название> уже есть в магазине')
+                print(f'Продукт {product} уже есть в магазине')
             elif product not in self.get_products():
                 product_str = str(product)  # Строковое представление продукта
                 file = open(self.__file_name, 'a')  # Открытие файла для добавления
