@@ -75,3 +75,15 @@ print(file.tell()) # Текущая позиция в файле
 pprint(file.read()) # Читает файл
 print(file.tell()) # Текущая позиция в файле
 file.close() # Закрывает файл
+
+#Lecture 4
+#Оператор with
+name = 'Files.txt'
+with open(name, encoding='utf-8') as file:
+    for line in file:
+        # print(line) #Большое расстояние между строками из за считывания \n
+        # print(line, end='')
+        # Что бы пробежаться до конца файла и вывести каждый символ
+        for char in line:
+            print(char, end='')
+    print(file.tell())
