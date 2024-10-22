@@ -76,7 +76,7 @@ pprint(file.read()) # Читает файл
 print(file.tell()) # Текущая позиция в файле
 file.close() # Закрывает файл
 
-#Lecture 4
+#Лекция №4
 #Оператор with
 name = 'Files.txt'
 with open(name, encoding='utf-8') as file:
@@ -87,3 +87,12 @@ with open(name, encoding='utf-8') as file:
         for char in line:
             print(char, end='')
     print(file.tell())
+
+#Лекция №5
+print("Привет, "+" мир!") # Сложение строк. Складывать можно только строки
+print("Меня зовут %s, мне %s" % ('Maxim', 14)) # Форматирование строк устаревшим методом.
+# Есть методы %s, %d, %f, %x - данный метод является устаревшим и подставляет кортеж
+print("Меня зовут %(name)s, мне %(year)s" % { 'name': 'Maxim', 'year': 14 }) # Форматирование строк устаревшим методом.
+print('Я учусь в {} {}' .format('Урбан', '-university')) # Форматирование строк устаревшим методом.
+print('Я учусь в {title}{postfix} {title}' .format(title='Урбан', postfix='-university'))  #Считается новым методом
+print(f'{"Urban "*2}-это лучший университет')
