@@ -1,20 +1,20 @@
 # module_9_7
-def is_prime(func):
-    def wrapper(*args):
-        result = func(*args)
-        if result % 2 == 0:
+def is_prime(func): #Декоратор принимает вывод функции sum_three
+    def wrapper(*args): #Функция проверки на простоту
+        result = func(*args) # Принимает аргументы от функции декоратора со множеством аргументов
+        if result % 2 == 0: #Проверка на простоту принятых аргументов
             print('Составное')
         else:
             print('Простое')
-        return result
+        return result #Возвращает простое или составное число
 
-    return wrapper
+    return wrapper #Возврат декоратора
 
 
-@is_prime
-def sum_three(a, b, c):
-    return a + b + c
+@is_prime #Объявление декоратора
+def sum_three(a, b, c): #Функция суммы трех чисел
+    return a + b + c #Возвращает сумму трех чисел
 
 
 result = sum_three(2, 3, 6)
-print(result)
+print(result) #Выводит результат и функции и декоратора
